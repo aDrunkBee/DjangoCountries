@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список стран</title>
+</head>
+<body>
+<a href="/">На главную</a><br><br>
+{% for elem in 'ABCDEFGHIJKLMNOPQRSTUWXYZ' %}
+    <a href="/country_alpha/{{ elem }}">{{ elem }}</a>
+    {% endfor %}
+<h1>Список стран</h1>
+<ol>
+  {% for item in items %}
+    <a href="/country_item/{{ item.country }}"><li>{{ item.country }}</li></a>
+    {% endfor %}
+</ol>
+</body>
+</html>
