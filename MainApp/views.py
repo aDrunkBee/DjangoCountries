@@ -19,14 +19,13 @@ def country_item(request, country):
             return render(request, "country_item.html", context)
 
 def country_alpha(request, elem):
-    res = f"""<a href="/countries-list">К списку стран</a>
-        <h1>{elem}</h1>
-        <ul>"""
+    cnt_list=[]
     for item in items:
         if item["country"][0] == elem:
-            res += f"<li>{item['country']}</li>"
-    res += "</ul>"
-    return HttpResponse(res)
+            cnt_list.append(item)
+    context = {"items": cnt_list}
+    return render(request, "country_alpha.html", context)
+
 
 def languages_list(request):
     lang_list = []
@@ -34,21 +33,13 @@ def languages_list(request):
         for lang in item["languages"]:
             if lang not in lang_list:
                 lang_list.append(lang)
-    res = f"""<a href="/">На главную</a>
-        <h1>Список языков мира</h1>
-        <ol>"""
-    for i in sorted(lang_list):
-        res += f"<a href=/lang-use/{i}><li>{i}</li></a>"
-    res += "</ol>"
-    return HttpResponse(res)
+    context = {"items": lang_list}
+    return render(request, "language_list.html", context)
 
 def lang_use(request, lang):
-    res = f"""<a href=/languages-list>К списку языков</a>
-        <h1>Страны говорящие на {lang}</h1>
-        <ul>
-        """
+    cnt_list=[]
     for item in items:
         if lang in item["languages"]:
-            res += f"<li>{item['country']}</li>"
-    res += "</ul>"
-    return HttpResponse(res)
+            cnt_list.append(item)
+    context = {"items": cnt_list}
+    return render(request, "lang_use.html", context)
