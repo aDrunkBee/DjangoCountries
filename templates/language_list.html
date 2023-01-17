@@ -5,9 +5,10 @@
     <title>Языки мира</title>
 </head>
 <body>
+<a href="/">На главную</a><br><br>
 <h1>Список языков мира</h1>
 <ol>
-{% for lang in language %}
+{% for lang in items %}
     <a href="/lang-use/{{ lang }}"><li>{{ lang }}</li></a>
 {% endfor %}
 </ol>
