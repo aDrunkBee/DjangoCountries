@@ -17,8 +17,10 @@ def country_item(request, country):
         if item["country"] == country:
             context = {"item": item}
             return render(request, "country_item.html", context)
+    # TODO: обработать ситуацию "если страна с указанным названием будет не найдена", вернув страницу с кодом 404
 
 def country_alpha(request, elem):
+    # TODO: переименуйте неинформативную переменную elem
     cnt_list=[]
     for item in items:
         if item["country"][0] == elem:

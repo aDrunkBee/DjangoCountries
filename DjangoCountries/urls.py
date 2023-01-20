@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from MainApp import views
 
+# TODO: добавьте в проект файл .gitignore
+
 urlpatterns = [
     path("", views.home),
     path("countries-list", views.countries_list),
